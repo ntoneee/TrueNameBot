@@ -16,7 +16,9 @@ async def handle_start(message: types.Message):
     )
 
 
-@dp.message_handler(lambda message: message.is_forward(), content_types=types.ContentTypes.ANY)
+@dp.message_handler(lambda message: message.is_forward()
+                    and message.chat.type == types.ChatType.PRIVATE,
+                    content_types=types.ContentTypes.ANY)
 async def handle_forwards(message: types.Message):
     if message.forward_from_chat:
         name = message.forward_from_chat.title
