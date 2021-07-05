@@ -1,6 +1,9 @@
 from os import getenv
 from asyncio import sleep
 from aiogram import Bot, Dispatcher, executor, types
+from dotenv import load_dotenv
+
+load_dotenv()
 
 bot = Bot(getenv('TOKEN'))
 dp = Dispatcher(bot)
